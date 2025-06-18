@@ -25,6 +25,7 @@ input[type="number"] {
     -moz-appearance: textfield; /* Firefox */
 }
 
+
 /* --- Form Page Container --- */
 .form-page-container {
     max-width: clamp(300px, 70vw, 800px); /* Using clamp for better responsive width */
@@ -141,23 +142,23 @@ input[type="number"] {
 .form-group textarea,
 .form-group select { /* Added select */
     padding: 13px 16px;
-    border: 1px solid #dcdcdc;
+    border: 1px solid black;
     border-radius: 9px;
     font-size: 1.05rem;
     
     width: 100%;
     box-sizing: border-box;
     transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
-    background-color: #fcfcfc;
+    
 }
 
 .form-group input:focus,
 .form-group textarea:focus,
 .form-group select:focus {
     border-color: #007bff;
-    box-shadow: 0 0 0 4px rgba(0, 123, 255, 0.2);
+    
     transform: translateY(-2px);
-    background-color: #ffffff;
+   
 }
 
 .form-group textarea {
