@@ -1,0 +1,388 @@
+/* src/styles/App.css */
+
+/* --- Google Fonts Import (Roboto is a common Google font, or 'Google Sans' if you have it) --- */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+/* If you have Google Sans, prefer: @import url('https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&display=swap'); */
+
+
+/* --- CSS Variables: Google Gemini Light Mode Palette & Metrics --- */
+:root {
+  /* Colors */
+  --google-purple-500: #673ab7; /* Primary accent, akin to Google Forms' header */
+  --google-purple-700: #512da8;
+  --google-blue-500: #4285f4;
+  --google-green-500: #34a853;
+  --google-red-500: #ea4335;
+  --google-yellow-500: #fbbc05;
+
+  --color-primary: var(--google-purple-500);
+  --color-primary-dark: var(--google-purple-700);
+
+  --color-background-app: #e8eaed; /* Light grey background for the entire app */
+  --color-background-section: #f8f9fa; /* Slightly darker grey for sections like features */
+  --color-background-card: #ffffff; /* White background for all cards (forms, fields) */
+
+  --color-text-dark: #202124; /* Primary text color */
+  --color-text-medium: #5f6368; /* Secondary text, descriptions */
+  --color-text-light: #80868b; /* Placeholder, hints */
+
+  --color-border-light: #dadce0; /* Thin, subtle borders */
+  --color-border-medium: #bdc1c6;
+  --color-divider: #e0e0e0; /* Used for subtle separators */
+
+  --color-error: var(--google-red-500);
+  --color-success: var(--google-green-500);
+
+  /* Shadows (Material Design style) */
+  --shadow-1dp: 0 1px 2px 0 rgba(60, 64, 67, 0.3), 0 1px 3px 1px rgba(60, 64, 67, 0.15); /* For general cards */
+  --shadow-2dp: 0 4px 8px 3px rgba(60, 64, 67, 0.15), 0 2px 3px 0 rgba(60, 64, 67, 0.3); /* For hovered/active elements */
+
+  /* Border Radii */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+
+  /* Spacing */
+  --spacing-xxs: 2px;
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 16px;
+  --spacing-lg: 24px;
+  --spacing-xl: 32px;
+  --spacing-xxl: 48px;
+
+  /* Transitions */
+  --transition-fast: 0.15s ease-out;
+  --transition-normal: 0.3s ease-out;
+}
+
+/* --- Base Resets & Global Typography --- */
+html, body {
+  height: 100%; /* Ensure body stretches to fill viewport */
+  margin: 0;
+  padding: 0;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box; /* Include padding and border in element's total width and height */
+}
+
+body {
+  font-family: 'Roboto', Arial, sans-serif; /* Or 'Google Sans' if you prefer and have access */
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--color-text-dark);
+  background-color: var(--color-background-app);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Make root fill at least viewport height */
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: var(--color-text-dark);
+  margin: 0 0 var(--spacing-md) 0;
+  font-weight: 500; /* Medium weight, common in Google's UI */
+}
+h1 { font-size: 2.5rem; }
+h2 { font-size: 2rem; }
+h3 { font-size: 1.5rem; }
+h4 { font-size: 1.25rem; }
+
+p {
+  margin: 0 0 var(--spacing-md) 0;
+}
+
+a {
+  color: var(--google-blue-500);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+a:hover {
+  color: var(--google-blue-500);
+  text-decoration: underline;
+}
+
+/* --- Global Button Styles --- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 24px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  text-decoration: none;
+  border: 1px solid transparent; /* Base for all buttons */
+  box-shadow: var(--shadow-1dp); /* Subtle shadow for general buttons */
+}
+
+.btn.primary {
+  background-color: var(--color-primary);
+  color: var(--color-background-card); /* White text */
+}
+.btn.primary:hover {
+  background-color: var(--color-primary-dark);
+  box-shadow: var(--shadow-2dp);
+}
+.btn.primary:active {
+  background-color: var(--color-primary-dark);
+  box-shadow: none; /* Remove shadow on click */
+  transform: translateY(1px); /* Slight press effect */
+}
+
+.btn.secondary {
+  background-color: var(--color-background-card); /* White background */
+  color: var(--color-primary); /* Primary text color */
+  border-color: var(--color-primary); /* Primary border color */
+}
+.btn.secondary:hover {
+  background-color: var(--color-background-section); /* Light grey on hover */
+  box-shadow: var(--shadow-2dp);
+}
+.btn.secondary:active {
+  background-color: var(--color-background-section);
+  box-shadow: none;
+  transform: translateY(1px);
+}
+
+.btn.icon-btn {
+  background: none;
+  border: none;
+  padding: var(--spacing-sm);
+  color: var(--color-text-medium);
+  font-size: 1.3rem; /* Adjust icon size */
+  border-radius: 50%; /* Make it perfectly round */
+  transition: background-color var(--transition-fast), color var(--transition-fast);
+}
+.btn.icon-btn:hover {
+  background-color: rgba(var(--color-text-dark), 0.04); /* Light transparent dark grey */
+  color: var(--color-text-dark);
+}
+.btn.icon-btn:active {
+  background-color: rgba(var(--color-text-dark), 0.08); /* Darker transparent dark grey */
+}
+
+
+/* --- Global Input Field Styles --- */
+input:not([type="checkbox"]):not([type="radio"]):not([type="file"]), /* Exclude specific types */
+textarea,
+select {
+  width: 100%;
+  padding: 12px 16px;
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius-sm);
+  font-size: 1rem;
+  color: var(--color-text-dark);
+  background-color: var(--color-background-card);
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+input:not([type="checkbox"]):not([type="radio"]):not([type="file"]):focus,
+textarea:focus,
+select:focus {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 1px var(--color-primary); /* Thin primary colored ring */
+  outline: none;
+  background-color: var(--color-background-card); /* Ensure white background on focus */
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: var(--color-text-light);
+}
+
+textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+/* --- Global Checkbox & Radio Styles (More custom than default HTML, but still accessible) --- */
+.radio-option, .checkbox-option {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  position: relative;
+  padding: var(--spacing-xs) 0;
+  color: var(--color-text-dark);
+}
+
+.radio-option input[type="radio"],
+.checkbox-option input[type="checkbox"] {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.radio-option span, .checkbox-option span {
+  position: relative;
+  padding-left: var(--spacing-xl); /* Space for custom control */
+  font-size: 1rem;
+}
+
+.radio-option span:before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 20px;
+  width: 20px;
+  background-color: var(--color-background-card);
+  border: 2px solid var(--color-text-light); /* Default border */
+  border-radius: 50%; /* Round for radio */
+  transition: all var(--transition-fast);
+}
+
+.checkbox-option span:before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 20px;
+  width: 20px;
+  background-color: var(--color-background-card);
+  border: 2px solid var(--color-text-light); /* Default border */
+  border-radius: var(--radius-sm); /* Square for checkbox */
+  transition: all var(--transition-fast);
+}
+
+/* Hover effects */
+.radio-option:hover span:before,
+.checkbox-option:hover span:before {
+  border-color: var(--color-text-dark);
+}
+
+/* Checked state */
+.radio-option input[type="radio"]:checked + span:before {
+  background-color: var(--color-primary);
+  border-color: var(--color-primary);
+}
+
+.checkbox-option input[type="checkbox"]:checked + span:before {
+  background-color: var(--color-primary);
+  border-color: var(--color-primary);
+}
+
+/* Inner dot/checkmark */
+.radio-option input[type="radio"]:checked + span:after {
+  content: '';
+  position: absolute;
+  left: 6px; /* Center dot */
+  top: 50%;
+  transform: translateY(-50%);
+  height: 8px;
+  width: 8px;
+  background-color: var(--color-background-card);
+  border-radius: 50%;
+  animation: scaleIn var(--transition-fast) forwards;
+}
+
+.checkbox-option input[type="checkbox"]:checked + span:after {
+  content: '✓'; /* Checkmark symbol */
+  position: absolute;
+  left: 4px; /* Center checkmark */
+  top: 50%;
+  transform: translateY(-50%) scale(0); /* Start scale 0 */
+  color: var(--color-background-card);
+  font-size: 1.2rem;
+  line-height: 1;
+  animation: scaleIn var(--transition-fast) forwards;
+}
+
+@keyframes scaleIn {
+  from { transform: translateY(-50%) scale(0); opacity: 0; }
+  to { transform: translateY(-50%) scale(1); opacity: 1; }
+}
+
+/* Focus state for accessibility */
+input[type="radio"]:focus + span:before,
+input[type="checkbox"]:focus + span:before {
+  outline: 2px solid var(--google-blue-500); /* Accessible focus ring */
+  outline-offset: 2px;
+}
+
+/* Error message for form fields */
+.error-message {
+  color: var(--color-error);
+  font-size: 0.85rem;
+  margin-top: var(--spacing-xs);
+  padding-left: var(--spacing-xxs);
+}
+
+.required-star {
+  color: var(--color-error);
+  margin-left: var(--spacing-xxs);
+}
+
+
+/* --- Footer (Common to all pages) --- */
+.app-footer {
+  text-align: center;
+  padding: var(--spacing-lg) 0;
+  color: var(--color-text-medium);
+  font-size: 0.9rem;
+  border-top: 1px solid var(--color-border-light);
+  background-color: var(--color-background-card);
+  margin-top: auto; /* Pushes footer to the bottom */
+  box-shadow: 0 -1px 2px rgba(60, 64, 67, 0.05); /* Subtle shadow on top */
+}
+
+/* --- Back Button (Common to form pages) --- */
+.back-button {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  padding: 8px 16px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--color-text-medium);
+  background-color: var(--color-background-card);
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  box-shadow: var(--shadow-1dp);
+}
+
+.back-button:hover {
+  background-color: var(--color-background-section);
+  color: var(--color-text-dark);
+  box-shadow: var(--shadow-2dp);
+}
+.back-button:active {
+  background-color: var(--color-background-section);
+  box-shadow: none;
+  transform: translateY(1px);
+}
+
+/* Responsive adjustments for global elements */
+@media (max-width: 768px) {
+  .btn {
+    padding: 8px 16px;
+    font-size: 0.9rem;
+  }
+  input:not([type="checkbox"]):not([type="radio"]):not([type="file"]),
+  textarea,
+  select {
+    padding: 10px 12px;
+    font-size: 0.95rem;
+  }
+  .app-footer {
+    padding: var(--spacing-md) 0;
+  }
+}
