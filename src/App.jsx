@@ -8,9 +8,9 @@ import BuiltFormDisplayPage from "./pages/BuiltFormDisplayPage"; // You'll creat
 
 const App = () => {
   return (
-    <Router>
+    <Router basename="/Json_Form/">
       <Routes>
-        <Route path="/" element={<LandingPage />} />
+        <Route path="/" index exact element={<LandingPage />} />
         <Route path="/demo" element={<DemoFormPage />} />
         <Route path="/build" element={<FormBuilderPage />} /> {/* New Route */}
         <Route path="/built-form" element={<BuiltFormDisplayPage />} /> {/* New Route */}
