@@ -780,7 +780,9 @@
 .dynamic-form textarea {
   width: 100%;
   padding: 12px 14px;
-  border: 1px solid #dcdfe6;
+  border: 1px solid grey;
+  background-color: white;
+  color:black;
   border-radius: 6px;
   font-size: 15px;
   transition: 0.3s ease;
