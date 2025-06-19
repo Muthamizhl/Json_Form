@@ -772,6 +772,8 @@
 .dynamic-form {
   display: flex;
   flex-direction: column;
+  color: black;
+  
   gap: 20px;
 }
 
@@ -781,7 +783,7 @@
   width: 100%;
   padding: 12px 14px;
   border: 1px solid grey;
-  background-color: white;
+ 
   color:black;
   border-radius: 6px;
   font-size: 15px;
