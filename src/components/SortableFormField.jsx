@@ -68,14 +68,7 @@ const SortableFormField = ({ field, index, onEdit, onRemove, isEditing }) => {
         <span>{field.label} {field.required && '*'}</span>
         <div className="field-actions">
           {/* We spread listeners here for the drag handle */}
-          <button
-            className="icon-btn drag-handle"
-            {...listeners} // Listeners for drag
-            title="Drag to reorder"
-            // Adding a visual drag handle icon
-          >
-            &#x2261; {/* Hamburger/reorder icon */}
-          </button>
+          
           <button className="icon-btn edit-btn" onClick={(e) => { e.stopPropagation(); onEdit(index); }} title="Edit field">✏️</button>
           <button className="icon-btn delete-btn" onClick={(e) => { e.stopPropagation(); onRemove(index); }} title="Delete field">🗑️</button>
         </div>
